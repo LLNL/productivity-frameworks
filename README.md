@@ -20,10 +20,34 @@ debt and vendor lock-in. Since MPIs are often ABI-incompatible,
 trampolines such as the open-source Wi4MPI library is used when such
 cases arise.
 
-
+<!---
 ### Getting started
+--->
 
 ### Contributing 
+
+Contributions for bug fixes and new features are welcome and follow
+the GitHub
+[fork and pull model](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-collaborative-development-models).
+Contributors develop on a branch of their personal fork and create
+pull requests to merge their changes into the main repository. 
+
+
+1. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) `productivity-frameworks`.
+2. [Clone](https://help.github.com/en/github/getting-started-with-github/fork-a-repo#keep-your-fork-synced)
+your fork: `git clone git@github.com:[username]/productivity-frameworks.git`
+3. Create a topic branch for your changes: `git checkout -b new_feature`
+4. Create feature or add fix (and add tests if possible)
+5. Make sure everything still passes: `make check`
+6. Push the branch to your GitHub repo: `git push origin new_feature`
+7. Create a pull request against `productivity-frameworks` and describe what your changes do and why you think it should be merged. List any
+outstanding *todo* items. 
+
+
+### Authors
+
+Edgar A. Leon, Nathan Hanford, and Eric Green.
+
 
 ### License
 
