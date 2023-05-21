@@ -57,7 +57,7 @@ mpicc hello.c -o hello
 and executed:
 
 ```bash
-srun -n 4 ./hello
+srun --mpi=pmi2 -n 4 ./hello
 ```
 
 ### Switching MPI implementations using Wi4MPI
@@ -95,9 +95,9 @@ spack load osu-micro-benchmarks
 Several benchmarks may be executed to assert the usability and overhead of Wi4MPI:
 
 ```bash
-srun -n 4 osu_init
-srun -n 2 osu_bibw
-srun -n 4 osu_allreduce
+srun --mpi=pmi2 -n 4 osu_init
+srun --mpi=pmi2 -N 2 osu_bibw
+srun --mpi=pmi2 -N 2 -n 4 osu_allreduce
 ```
 
 You can note the results as reference for the next execution using Wi4MPI.
@@ -218,7 +218,7 @@ Now, we're ready to install the new package in our environment.
 
 ```bash
 spack add osu-micro-benchmarks ^openmpi
-srun -N 1 install
+srun -N 1 spack install
 ```
 
 With an OMB suite compiled with OpenMPI, the following lines show you how to run it with MPICH via srun.
@@ -238,7 +238,7 @@ export WI4MPI_RUN_MPIIO_C_LIB=${WI4MPI_RUN_MPI_C_LIB}
 export WI4MPI_RUN_MPIIO_F_LIB=${WI4MPI_RUN_MPI_F_LIB}
 export LD_PRELOAD=${WI4MPI_ROOT}/libexec/wi4mpi/libwi4mpi_${WI4MPI_FROM}_${WI4MPI_TO}.so:${WI4MPI_RUN_MPI_C_LIB}
 
-srun --mpi=pmix -n 4 osu_hello
+srun --mpi=pmi2 -n 4 osu_hello
 ```
 
 The different `WI4MPI_*` variables are listed in the documentation.
@@ -250,4 +250,3 @@ You are using Wi4MPI-3.6.4 with the mode preload From OMPI To MPICH
 # OSU MPI Hello World Test v7.0
 This is a test with 4 processes
 ```
-
