@@ -175,7 +175,7 @@ Let's run it:
 ```bash
 spack load amg
 export OMP_NUM_THREADS=2
-srun -N 2 -n 4 amg -P 1 1 1
+srun --mpi=pmi2 -N 2 -n 32 amg -P 4 4 2
 ```
 
 Wait a second! What MPI did Spack even use to build this?!
@@ -206,7 +206,7 @@ export WI4MPI_RUN_MPI_F_LIB=${OPENMPI_ROOT}/lib64/libmpi_mpifh.so
 export WI4MPI_RUN_MPIIO_C_LIB=${WI4MPI_RUN_MPI_C_LIB}
 export WI4MPI_RUN_MPIIO_F_LIB=${WI4MPI_RUN_MPI_F_LIB}
 export WI4MPI_WRAPPER_LIB=${WI4MPI_ROOT}/lib_${WI4MPI_TO}/libwi4mpi_${WI4MPI_TO}.so
-srun -N 2 -n 32 amg -P 1 1 1
+srun --mpi=pmix -N 2 -n 32 amg -P 4 4 2
 ```
 
 ## Quicksilver
@@ -223,5 +223,7 @@ rebuilding.
 spack load quicksilver
 spack cd -i quicksilver
 cd Examples/NoFission
-srun -N 2 -n 32 qs -i noFission.inp
+srun --mpi=pmix -N 2 -n 32 qs -i noFission.inp
 ```
+
+And finally, unsetting all the above environment variables would give the original quicksilver.
